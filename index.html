@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nathael</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:linear-gradient(135deg,#000000,#120022,#3b0066);
+
+color:white;
+
+}
+
+/* glowing background */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:purple;
+
+filter:blur(220px);
+
+opacity:0.4;
+
+top:-200px;
+
+left:-200px;
+
+}
+
+/* glass container */
+
+.card{
+
+width:380px;
+
+padding:40px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,0.05);
+
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,0.1);
+
+text-align:center;
+
+box-shadow:0 0 40px rgba(0,0,0,0.7);
+
+}
+
+/* profile */
+
+.profile{
+
+width:120px;
+
+height:120px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+margin-bottom:15px;
+
+border:3px solid rgba(255,255,255,0.2);
+
+}
+
+/* name */
+
+h1{
+
+font-size:24px;
+
+margin-bottom:8px;
+
+}
+
+/* desc */
+
+.desc{
+
+font-size:14px;
+
+opacity:0.8;
+
+margin-bottom:20px;
+
+}
+
+/* follower box */
+
+.followers{
+
+padding:12px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.1);
+
+margin-bottom:25px;
+
+}
+
+/* button */
+
+.btn{
+
+display:block;
+
+text-decoration:none;
+
+color:white;
+
+padding:13px;
+
+margin-top:12px;
+
+border-radius:12px;
+
+font-weight:600;
+
+background:linear-gradient(135deg,#6a00ff,#a100ff);
+
+transition:0.3s;
+
+}
+
+.btn:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 20px rgba(162,0,255,0.7);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- FOTO PROFIL VIA URL -->
+
+<img
+class="profile"
+src="https://i.postimg.cc/rsm58Pvs/Chat-GPT-Image-4-Mar-2026-16-38-01-(2)-(1).jpg"
+>
+
+<h1>Itsadekuu</h1>
+
+<p class="desc">
+
+Selamat datang di website saya
+    Terimakasih atas support nya
+    semoga di beri kesehatan selalu
+    untuk link donate dan saluran ada di bawah teman teman.
+
+</p>
+
+<div class="followers">
+
+TikTok Followers  
+<br>
+<b id="followers">Loading...</b>
+
+</div>
+
+<a href="https://donate-link.com" class="btn">
+
+DONATE
+
+</a>
+
+<a href="https://info-link.com" class="btn">
+
+INFO UPDATE FFKIPAS BY DEKU
+
+</a>
+
+</div>
+
+<script>
+
+/* USERNAME TIKTOK */
+
+const username = "@itsadekuu";
+
+/* API */
+
+async function getFollowers(){
+
+try{
+
+let res = await fetch(`https://www.tikwm.com/api/user/info?unique_id=itsadekuu`);
+
+let data = await res.json();
+
+let followers = data.data.follower_count;
+
+document.getElementById("followers").innerText =
+followers.toLocaleString();
+
+}
+
+catch{
+
+document.getElementById("followers").innerText =
+"2.315";
+
+}
+
+}
+
+getFollowers();
+
+</script>
+
+</body>
+</html>
